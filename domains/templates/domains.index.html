@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'domains/css/index.css' %}">
+{% endblock %}
+
+{% block title %}Domains Index{% endblock %}
+
+{% block content %}
+domains::index() view
+{% endblock %}
