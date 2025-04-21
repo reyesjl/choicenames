@@ -18,6 +18,7 @@
     max-width: 100%;
     border-collapse: collapse; /* Remove borders between cells */
     width: 100%;
+    background-color: #131311;
 }
 
 .domain-table th,
@@ -30,7 +31,13 @@
 
 .domain-table th {
     font-weight: bold;
-    background-color: #f9f9f9; /* Optional: Add a light background for headers */
+    background-color: #f95305;
+    color: #0b0905; 
+}
+
+.domain-table tr:hover {
+    cursor: pointer;
+    background: rgb(110, 55, 15);
 }
 
 .domain-table td {
