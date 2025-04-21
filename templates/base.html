@@ -11,7 +11,14 @@
     <body>
         <header>
            <div class="appbar">
-                <div>Choicenames</div>
+                <div class="appname">Choicenames</div>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'domains:index' %}">Domains</a></li>
+                    </ul>
+                </nav>
            </div>
         </header>
         <main>

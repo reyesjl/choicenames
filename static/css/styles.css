@@ -17,7 +17,36 @@ footer {
 }
 
 .appbar {
-    text-align: center;
     padding: 1rem 0;
+}
+
+.appname {
+    text-align: center;
     font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.nav-list {
+    display: flex;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    align-items: center;
+    gap: 1rem;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.nav-item a {
+    color: rgb(255 182 1);
+    text-decoration: underline;
+}
+
+.nav-item a:hover {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
 }
