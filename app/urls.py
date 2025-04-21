@@ -26,15 +26,15 @@ def home(request):
     """
     return render(request, 'homepage.html')
 
-def info(request):
+def about(request):
     """
-    A view that returns a simple HTML response with information about the app.
+    About page.
     """
-    return HttpResponse('version 0.0.1 alpha')
+    return render(request, 'about.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('info/', info, name='info'),
+    path('about/', about, name='about'),
     path('domains/', include('domains.urls')),
 ]

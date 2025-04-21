@@ -16,6 +16,12 @@ footer {
     text-align: center;
 }
 
+.version {
+    font-size: .8rem;
+    color: gray; 
+    font-style: italic;
+}
+
 .appbar {
     padding: 1rem 0;
 }
@@ -25,6 +31,12 @@ footer {
     font-weight: bold;
     margin-bottom: 1rem;
 }
+
+.palm-image {
+    max-width: 100%;
+}
+
+
 
 .nav-list {
     display: flex;

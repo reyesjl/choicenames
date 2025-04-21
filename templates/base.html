@@ -16,6 +16,7 @@
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'about' %}">About</a></li>
                         <li class="nav-item"><a href="{% url 'domains:index' %}">Domains</a></li>
                     </ul>
                 </nav>
@@ -25,7 +26,8 @@
             {% block content %}{% endblock %}
         </main>
         <footer>
-            <p>&copy; 1995-2025 Choicenames <span class="version">version_0.0.1-alpha</span></p>
+            <p>&copy; 1995-2025 Choicenames</p>
+            <p><span class="version">version_0.0.1-alpha</span></p>
         </footer>
     </body>
 </html>
