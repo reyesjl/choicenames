@@ -26,5 +26,5 @@ jobs:
         ssh -i ~/.ssh/id_ed25519 ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} << 'EOF'
           cd /root/choicenames
           git pull origin main
-          docker-compose up --build -d
+          docker compose up --build -d
         EOF
