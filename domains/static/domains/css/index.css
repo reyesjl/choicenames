@@ -32,6 +32,10 @@
     flex-wrap: wrap;
 }
 
+.ask-price {
+    min-width: 80px;
+}
+
 .compare-price {
     color: darkred;
     font-size: .625rem;
