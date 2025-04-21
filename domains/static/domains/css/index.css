@@ -8,6 +8,13 @@
     font-style: italic;
 }
 
+.domain-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
 .domain-list {
     margin: 0;
     padding: 0;
@@ -20,8 +27,19 @@
     align-items: center;
 }
 
+.domain-price {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.compare-price {
+    color: darkred;
+    font-size: .625rem;
+}
+
+
 .domain-item:nth-child(odd) {
-    background-color: #f9f9f936;
+    background-color: #ffce3d54;
 }
 
 .mb-4 {

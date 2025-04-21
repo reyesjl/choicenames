@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load price_filters %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'domains/css/index.css' %}">
@@ -15,6 +16,10 @@
     </div>
 
     <ul class="domain-list">
+        <div class="domain-list-header">
+            <div>Name</div>
+            <div>Ask Price</div>
+        </div>
         {% for domain in domains %}
             <li class="domain-item">
                 <div class="domain-name">
@@ -22,10 +27,12 @@
                 </div>
                 
                 <div class="domain-price">
-                ${{ domain.ask_price }}
-                {% if domain.compare_price %}
-                    <s>${{ domain.compare_price }}</s>
-                {% endif %}
+                    <div class="ask-price">${{ domain.ask_price|format_price }}</div>
+                    <div class="compare-price">
+                    {% if domain.compare_price %}
+                        <s>${{ domain.compare_price|format_price }}</s>
+                    {% endif %}
+                    </div>
                 </div>
             </li>
         {% endfor %}
