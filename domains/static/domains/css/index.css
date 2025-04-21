@@ -33,14 +33,16 @@
 }
 
 .ask-price {
-    min-width: 80px;
+    min-width: 50px;
+    text-align: right;
 }
 
 .compare-price {
     color: darkred;
     font-size: .625rem;
+    text-align: right;
+    min-width: 50px;
 }
-
 
 .domain-item:nth-child(odd) {
     background-color: #ffce3d54;
