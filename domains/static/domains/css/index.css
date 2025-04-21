@@ -14,6 +14,16 @@
     list-style-type: none;
 }
 
+.domain-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.domain-item:nth-child(odd) {
+    background-color: #f9f9f936;
+}
+
 .mb-4 {
     margin-bottom: 2rem;
 }

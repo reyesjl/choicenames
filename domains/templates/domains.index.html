@@ -16,11 +16,17 @@
 
     <ul class="domain-list">
         {% for domain in domains %}
-            <li>
-                {{ domain.name }} - ${{ domain.ask_price }}
+            <li class="domain-item">
+                <div class="domain-name">
+                {{ domain.name }}
+                </div>
+                
+                <div class="domain-price">
+                ${{ domain.ask_price }}
                 {% if domain.compare_price %}
                     <s>${{ domain.compare_price }}</s>
                 {% endif %}
+                </div>
             </li>
         {% endfor %}
     </ul>
