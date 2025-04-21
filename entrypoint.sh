@@ -20,6 +20,19 @@ if not User.objects.filter(username="${DJANGO_SUPERUSER_USERNAME}").exists():
     )
 EOF
 
+# Generate 50 fake domain names
+python manage.py shell <<EOF
+from faker import Faker
+from domains.models import Domain
+fake = Faker()
+for _ in range(50):
+    Domain.objects.create(
+        name=fake.domain_name(),
+        ask_price=fake.pydecimal(left_digits=5, right_digits=2, positive=True),
+        compare_price=fake.pydecimal(left_digits=5, right_digits=2, positive=True)
+    )
+EOF
+
 # Start the Gunicorn server
 echo "Starting Gunicorn..."
 exec "$@"
