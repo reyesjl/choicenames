@@ -68,10 +68,10 @@
                             {% endif %}
                         </td>
                         <td class="text-center">
-                            <i class="fa-solid fa-lock {% if domain.lock_state %}locked{% else %}unlocked{% endif %}"></i>
+                            <i class="fa-solid fa-lock {% if domain.lock_state %}enabled{% else %}disabled{% endif %}"></i>
                         </td>
                         <td class="text-center">
-                            <i class="fa-solid fa-mask {% if domain.privacy %}privacy-enabled{% else %}privacy-disabled{% endif %}"></i>
+                            <i class="fa-solid fa-mask {% if domain.privacy %}enabled{% else %}disabled{% endif %}"></i>
                         </td>
                         <td>{{ domain.status }}</td>
                         <td>{{ domain.hosting_plan }}</td>

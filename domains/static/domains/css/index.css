@@ -81,18 +81,10 @@
     text-align: center !important;
 }
 
-.locked {
-    color: #008000;
+.enabled {
+    color: rgb(255 182 1);
 }
 
-.unlocked {
-    color: grey;
-}
-
-.privacy-enabled {
-    color: darkblue;
-}
-
-.privacy-disabled {
-    color: grey;
+.disabled {
+    color: gray;
 }
