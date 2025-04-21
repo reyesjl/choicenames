@@ -54,9 +54,13 @@ img {
     list-style-type: none;
 }
 
-
 p {
     margin-bottom: .5rem;
+    line-height: 1.3rem;
+}
+
+.m-2 {
+    margin: 1.5rem 0;
 }
 
 .mb-1 {
