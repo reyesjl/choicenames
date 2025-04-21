@@ -8,5 +8,20 @@
 {% block title %}Domains Index{% endblock %}
 
 {% block content %}
-domains::index() view
+<div class="container">
+    <h2 class="title">Domain</h2>
+    <p class="subtitle">Explore all domain names.</p>
+
+    <ul class="domain-list">
+        {% for domain in domains %}
+            <li>
+                {{ domain.name }} - ${{ domain.ask_price }}
+                {% if domain.compare_price %}
+                    <s>${{ domain.compare_price }}</s>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
 {% endblock %}
