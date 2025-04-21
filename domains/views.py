@@ -1,13 +1,23 @@
 from django.shortcuts import redirect, render
+from django.db.models import Q
 from .models import Domain
 
 def index(request):
     """
     Index of all domains.
     """
-    domains = Domain.objects.all()
+    filter_letter = request.GET.get('filter', None)
+    if filter_letter == 'all' or not filter_letter:
+        domains = Domain.objects.all()
+        filter_letter = 'all'  # Ensure 'all' is passed to the template for highlighting
+    elif filter_letter.isalpha() and len(filter_letter) == 1:
+        domains = Domain.objects.filter(name__istartswith=filter_letter)
+    else:
+        domains = Domain.objects.all()
+
     context = {
         'domains': domains,
+        'active_filter': filter_letter,
     }
 
     return render(request, 'domains.index.html', context)

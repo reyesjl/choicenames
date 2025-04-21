@@ -15,27 +15,70 @@
         <p class="subtitle">Explore all domain names.</p>
     </div>
 
-    <ul class="domain-list">
-        <div class="domain-list-header">
-            <div>Name</div>
-            <div>Ask Price</div>
-        </div>
-        {% for domain in domains %}
-            <li class="domain-item">
-                <div class="domain-name">
-                {{ domain.name }}
-                </div>
-                
-                <div class="domain-price">
-                    <div class="ask-price">${{ domain.ask_price|format_price }}</div>
-                    <div class="compare-price">
-                    {% if domain.compare_price %}
-                        <s>${{ domain.compare_price|format_price }}</s>
-                    {% endif %}
-                    </div>
-                </div>
+    <div class="alphabet-filter mb-4">
+        <ul class="alphabet-list">
+            <li class="alphabet-item all {% if active_filter == 'all' %}active{% endif %}">
+                <a href="?filter=all">All</a>
             </li>
-        {% endfor %}
-    </ul>
+            {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                <li class="alphabet-item {% if letter == active_filter %}active{% endif %}">
+                    <a href="?filter={{ letter }}">{{ letter }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="container-full">
+    <div class="table-wrapper">
+        <table class="domain-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th colspan="2">Price</th> <!-- Merged Ask Price and Compare Price -->
+                    <th>Initial Date</th>
+                    <th>Expiration Date</th>
+                    <th class="text-center">Lock State</th>
+                    <th class="text-center">Privacy</th>
+                    <th>Status</th>
+                    <th>Hosting Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for domain in domains %}
+                    <tr>
+                        <td>{{ domain.name }}</td>
+                        <td colspan="2">
+                            ${{ domain.ask_price|format_price }}
+                            {% if domain.compare_price %}
+                                <s style="color: darkred;">${{ domain.compare_price|format_price }}</s>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if domain.initial_date %}
+                                {{ domain.initial_date|date:"M Y" }}
+                            {% else %}
+                                Jan 00
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if domain.expiration_date %}
+                                {{ domain.expiration_date|date:"M Y" }}
+                            {% else %}
+                                Dec 00
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <i class="fa-solid fa-lock {% if domain.lock_state %}locked{% else %}unlocked{% endif %}"></i>
+                        </td>
+                        <td class="text-center">
+                            <i class="fa-solid fa-mask {% if domain.privacy %}privacy-enabled{% else %}privacy-disabled{% endif %}"></i>
+                        </td>
+                        <td>{{ domain.status }}</td>
+                        <td>{{ domain.hosting_plan }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

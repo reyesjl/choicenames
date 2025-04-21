@@ -8,46 +8,84 @@
     font-style: italic;
 }
 
-.domain-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.table-wrapper {
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.domain-table {
+    max-width: 100%;
+    border-collapse: collapse; /* Remove borders between cells */
+    width: 100%;
+}
+
+.domain-table th,
+.domain-table td {
+    padding-right: 1rem;
+    text-align: left;
+    text-wrap: nowrap;
+    width: fit-content;
+}
+
+.domain-table th {
     font-weight: bold;
+    background-color: #f9f9f9; /* Optional: Add a light background for headers */
 }
 
-.domain-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+.domain-table td {
+    vertical-align: top; /* Ensure content aligns properly */
 }
 
-.domain-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.domain-price {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.ask-price {
-    min-width: 50px;
-    text-align: right;
-}
-
-.compare-price {
-    color: darkred;
-    font-size: .625rem;
-    text-align: right;
-    min-width: 50px;
-}
-
-.domain-item:nth-child(odd) {
-    background-color: #ffce3d54;
+.domain-table th:last-child,
+.domain-table td:last-child {
+    text-align: right !important;
 }
 
 .mb-4 {
     margin-bottom: 2rem;
+}
+
+.alphabet-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    overflow-x: auto;
+    justify-content: space-between;
+}
+
+.alphabet-item a {
+    color: rgb(255 182 1);
+}
+
+.alphabet-item a:hover {
+    text-decoration: none;
+    color: rgb(173, 124, 0);
+}
+
+.alphabet-item.active a {
+    font-weight: bold;
+    color: #ff9800; /* Highlight color for active filter */
+    text-decoration: none;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.locked {
+    color: #008000;
+}
+
+.unlocked {
+    color: grey;
+}
+
+.privacy-enabled {
+    color: darkblue;
+}
+
+.privacy-disabled {
+    color: grey;
 }
