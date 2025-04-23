@@ -118,3 +118,14 @@ a:hover {
     margin: 0 auto;
     padding: 0 1rem;
 }
+
+.applogo {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.applogo img {
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+}
