@@ -1,6 +1,8 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.db.models import Q
-from .models import Domain
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.contrib import messages
+from .models import Domain, DomainInquiry
 
 def index(request):
     """
@@ -71,4 +73,24 @@ def delete(request, id):
     domain = Domain.objects.get(id=id)
     domain.delete()
     return redirect('index')
+
+def submit_inquiry(request, domain_id):
+    if request.method == 'POST':
+        honeypot = request.POST.get('honeypot', '')
+        if honeypot:  # If honeypot is filled, reject the submission
+            return HttpResponseBadRequest("Invalid submission.")
+        
+        domain = get_object_or_404(Domain, id=domain_id)
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        offer = request.POST.get('offer')
+
+        DomainInquiry.objects.create(
+            domain=domain,
+            email=email,
+            phone_number=phone_number,
+            offer=offer
+        )
+        messages.success(request, "Your inquiry has been submitted successfully.")
+        return redirect('domains:show', id=domain_id)
 
