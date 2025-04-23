@@ -45,8 +45,9 @@
             </thead>
             <tbody>
                 {% for domain in domains %}
-                    <tr>
+                    <tr onclick="window.location.href='{% url 'domains:show' domain.id %}'">
                         <td>{{ domain.name }}</td>
+
                         <td colspan="2">
                             ${{ domain.ask_price|format_price }}
                             {% if domain.compare_price %}

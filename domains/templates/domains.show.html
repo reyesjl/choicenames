@@ -4,7 +4,29 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="title">Show Domain</h2>
-    <p class="subtitle">Show a domain by ID.</p>
+    <h2 class="title">{{ domain.name }}</h2>
+    <p class="subtitle mb-4">This domain is parked here. It could be anything.</p>
+
+    <form method="post" action="{% url 'domains:submit_inquiry' domain.id %}">
+        {% csrf_token %}
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number">
+        </div>
+        <div>
+            <label for="offer">Your Offer:</label>
+            <input type="number" id="offer" name="offer" step="0.01" required>
+        </div>
+        <!-- Honeypot field -->
+        <div style="display: none;">
+            <label for="honeypot">Leave this field empty:</label>
+            <input type="text" id="honeypot" name="honeypot">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>
 {% endblock %}

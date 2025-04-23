@@ -5,7 +5,8 @@ app_name = 'domains'
 urlpatterns = [
     path('', views.index, name='index'),
     path('create/', views.create, name='create'),
-    path('show/<int:id>/', views.show, name='show'),
-    path('update/<int:id>/', views.update, name='update'),
-    path('delete/<int:id>/', views.delete, name='delete'),
+    path('<int:id>/', views.show, name='show'),
+    path('<int:id>/update', views.update, name='update'),
+    path('<int:id>/delete', views.delete, name='delete'),
+    path('<int:domain_id>/submit-inquiry/', views.submit_inquiry, name='submit_inquiry'),
 ]
