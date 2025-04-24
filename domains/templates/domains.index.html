@@ -17,11 +17,11 @@
 
     <div class="alphabet-filter mb-4">
         <ul class="alphabet-list">
-            <li class="alphabet-item all {% if active_filter == 'all' %}active{% endif %}">
+            <li data-letter="ALL" class="fadeIn alphabet-item letter {% if active_filter == 'all' %}active{% endif %}">
                 <a href="?filter=all">All</a>
             </li>
             {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-                <li class="alphabet-item {% if letter == active_filter %}active{% endif %}">
+                <li data-letter={{letter}} class="fadeIn alphabet-item letter {% if letter == active_filter %}active{% endif %}">
                     <a href="?filter={{ letter }}">{{ letter }}</a>
                 </li>
             {% endfor %}
@@ -30,7 +30,7 @@
 </div>
 <div class="container-full">
     <div class="table-wrapper">
-        <table class="domain-table">
+        <table id="domain-table" class="domain-table fadeIn">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -77,9 +77,46 @@
                         <td>{{ domain.status }}</td>
                         <td>{{ domain.hosting_plan }}</td>
                     </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center">No Domains found. <br /> Such empty :( <br /> </td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const letters = document.querySelectorAll("#alphabet-list .letter");
+        const activeLetter = document.querySelector("#alphabet-list .letter.active");
+        const table = document.getElementById("domain-table");
+
+        console.log(letters);
+        console.log(activeLetter);
+
+        let delay = 0;
+
+        // Animate the active letter first
+        if (activeLetter) {
+            activeLetter.classList.add("fadeIn");
+            activeLetter.style.animationDelay = `${delay}s`;
+            delay += 0.5; // Adjust delay increment as needed
+        }
+
+        // Animate the rest of the letters
+        letters.forEach((letter) => {
+            if (!letter.classList.contains("active")) {
+                letter.classList.add("fadeIn");
+                letter.style.animationDelay = `${delay}s`;
+                delay += 0.2; // Adjust delay increment as needed
+            }
+        });
+
+        // Animate the table after all letters
+        table.style.animationDelay = `${delay}s`;
+    });
+</script>
 {% endblock %}
+
+
